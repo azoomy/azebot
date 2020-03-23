@@ -19,11 +19,8 @@ def check_mentions(api, keywords, since_id):
         if any(keyword in tweet.text.lower() for keyword in keywords):
             logger.info(f"Answering to {tweet.user.name}")
 
-            if not tweet.user.following:
-                tweet.user.follow()
-
             api.update_status(
-                status="Please reach us via DM",
+                status="DM for more support.",
                 in_reply_to_status_id=tweet.id, auto_populate_reply_metadata=True)
     return new_since_id
 
@@ -33,7 +30,7 @@ def main():
     while True:
         since_id = check_mentions(api, ["help", "support"], since_id)
         logger.info("Waiting...")
-        time.sleep(2)
+        time.sleep(50)
 
 if __name__ == "__main__":
     main()
