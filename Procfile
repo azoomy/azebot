@@ -1,2 +1,2 @@
-Worker: python f4f.py
-Worker: python bot.py
+worker: python f4f.py
+worker: python bot.py
